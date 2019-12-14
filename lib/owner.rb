@@ -35,12 +35,13 @@ attr_reader :name, :species
   end
 
   def cats
-    # returns a collection of all the cats that belong to the owner
+    # returns a collection of all the cats that belong to an owner
     # where is the collection of cats?....its in the Cats class
     # how do I call on that collection in the Owner class? It would be Cats.all
     # how do I return the Cat that matches to a specific owner?
     # Cat.all is an array but I need to return exact instances how? Which method to use?
     Cat.all.select {|cat_array| cat_array.owner == self}
+    # select returns an array of values that are true giveen the condition in the block
     # select returns values that are true given the condition in the block
     # cat_owner represents each object within the Cat.all array
     # .owner looks at the owner value for each object instance
@@ -71,19 +72,28 @@ attr_reader :name, :species
     # Dog.all represents all the dogs and its an array data type
     # we need to access the mood attribute in each instance of a dog so we will use map
     # change string value of the mood attribute to happy
-    Dog.all.map {|dog| dog.mood = "happy"}
+    dogs.each {|dog| dog.mood = "happy"}
 
   end
 
   def feed_cats
-    Cat.all.map {|cat| cat.mood = "happy"}
+    cats.each {|cat| cat.mood = "happy"}
   end
 
   def sell_pets
-    Dog.all.map {|dog| dog.mood = "nervous"}
-    Dog.all.map {|dog| dog.owner = nil}
-    Cat.all.map {|cat| cat.mood = "nervous"}
-    Cat.all.map {|cat| cat.owner = nil}
+    dogs.each do |dog|
+      dog.mood = "nervous"
+      dog.owner = nil
+    end
+
+    cats.each do |cat|
+      cat.mood = "nervous"
+      cat.owner = nil
+    end
+    # dogs.each {|dog| dog.mood = "nervous"}
+    # dogs.each {|dog| dog.owner = nil}
+    # cats.each {|cat| cat.mood = "nervous"}
+    # cats.each {|cat| cat.owner = nil}
   end
 
   def list_pets
