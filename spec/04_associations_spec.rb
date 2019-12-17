@@ -100,7 +100,7 @@ describe "Associations" do
         cat = Cat.new("Muffin", @owner)
         @owner.feed_cats
         expect(cat.mood).to eq("happy")
-      end
+      end 
     end
 
     describe "#sell_pets" do
