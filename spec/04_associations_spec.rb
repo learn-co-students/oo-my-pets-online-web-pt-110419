@@ -1,5 +1,5 @@
 require_relative 'spec_helper.rb'
-
+require "pry"
 describe "Associations" do
   before do
     @owner = Owner.new("Timmy")
@@ -19,6 +19,7 @@ describe "Associations" do
         expect(@owner.cats[0]).to eq(cat_1)
         expect(@owner.cats[1]).to eq(cat_2)
         expect(@owner.cats[2]).to eq(cat_3)
+         
         expect(@owner.cats.count).to eq(3)
       end
     end
@@ -38,7 +39,7 @@ describe "Associations" do
     describe "#buy_cat" do
       it 'can buy a cat that is an instance of the Cat class' do
         expect(@owner.cats.count).to eq(0)
-
+        
         @owner.buy_cat("Crookshanks")
         @owner.buy_cat("Whiskers")
         @owner.buy_cat("Garfield")
@@ -46,10 +47,11 @@ describe "Associations" do
         @owner.cats.each do |cat|
           expect(cat).to be_a(Cat)
         end
-
+        
         expect(@owner.cats.count).to eq(3)
+        
       end
-
+      
       it 'knows about its cats' do
         @owner.buy_cat("Crookshanks")
         @owner.buy_cat("Whiskers")
