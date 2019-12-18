@@ -5,13 +5,11 @@ class Owner
   
   @reset_all = []
   @@all = []
-  @@count = 0
   
   def initialize(name)
     @name = name
     @species = "human"
     @@all << self
-    @@count += 1
   end
   
   def say_species
@@ -63,6 +61,7 @@ class Owner
       dog.mood = "nervous"
       dog.owner = nil
     end
+    
     Cat.all.select do |cat|
       cat.mood = "nervous"
       cat.owner = nil
